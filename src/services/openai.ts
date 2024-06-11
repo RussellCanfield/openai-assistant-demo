@@ -19,7 +19,17 @@ export async function getOrCreateAssistant() {
 			instructions: `You are an expert software engineer.
 Your goal is to help another engineer write code using Javascript.
 Take a deep breathe and focus on writing clean, performant and concise code to solve the problem.
-Only output the code, do not provide an explanation.`,
+Your response should be in the following JSON format:
+
+{
+  "description": "Your explanation here",
+  "files": [
+      {
+        "filePath": "filepath/filename.extension",
+        "fileContents": "file contents here"
+      }
+  ]
+}`,
 			tools: [{ type: "code_interpreter" }],
 		})
 	);
