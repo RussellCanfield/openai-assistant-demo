@@ -1,4 +1,5 @@
 import {
+	addResponseToThread,
 	createThread,
 	getOrCreateAssistant,
 	getThreadMessages,
@@ -23,12 +24,26 @@ ${fs.readFileSync(path.resolve("./src/sample.js"))}
 
 await runThreadAndWait(thread.id, assitant.id);
 
-const messages = await getThreadMessages(thread.id);
+let messages = await getThreadMessages(thread.id);
 
 console.log(
-	"Response: ",
+	"Refactor Response: ",
 	(
 		messages.data.find((m) => m.role === "assistant")
 			?.content[0] as TextContentBlock
 	).text
+);
+
+await addResponseToThread(
+	thread.id,
+	"Can you write a simple unit test for that file?"
+);
+
+await runThreadAndWait(thread.id, assitant.id);
+
+messages = await getThreadMessages(thread.id);
+
+console.log(
+	"Test Gen Response: ",
+	(messages.data[0].content[0] as TextContentBlock).text
 );

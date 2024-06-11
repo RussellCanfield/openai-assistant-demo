@@ -42,6 +42,13 @@ export async function runThreadAndWait(threadId: string, assistantId: string) {
 	});
 }
 
+export async function addResponseToThread(threadId: string, content: string) {
+	return openai.beta.threads.messages.create(threadId, {
+		role: "user",
+		content,
+	});
+}
+
 export async function getThreadMessages(threadId: string) {
 	return openai.beta.threads.messages.list(threadId);
 }
