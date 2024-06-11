@@ -1,0 +1,19 @@
+{
+	"name": "openai-assistants",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "tsx ./src/index.ts"
+	},
+	"type": "module",
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"tsx": "4.15.2",
+		"typescript": "5.4.5"
+	},
+	"dependencies": {
+		"openai": "^4.50.0"
+	}
+}
